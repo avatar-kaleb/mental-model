@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>mental-model demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../mental-model.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic mental-model demo</h3>
+      <demo-snippet>
+        <template>
+          <mental-model
+            id="mentalModelBasic">
+          </mental-model>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+  <script>
+    var mentalModel = {
+          "category" : "decision-making",
+          "defense" : "<h2>Explanation:</h2><p>Defending against venturing outside of your Circle of Competence requires only but a moment of time. By taking a quick second to make sure we have the appropriate knowledge on the subject at hand, we prevent terrible big decisions in areas we shouldn't hastily be doing so.</p><h2>Questions:</h2><ul><li>Is this subject within my defined Circle of Competence perimeter?</li><li>Could I teach someone the subject I'm about to make this decision on?</li><li>Do I have a fundamental understanding of the core subjects within this decision?</li><li>Can I disprove ideas against the decision based on facts on the given subject?</li></ul>",
+          "definition" : "<p>Our circle of competence is the knowledge on topics we've studied for, experimented in, or learned from. Within a culture, there are areas with common understanding throughout, and subjects that are specialized (like heart surgery and the inner working of the organ). It is important to assess both types for your circle.</p><p>Opposite of the areas we definitely know, are areas we definitely don't because we haven't put effort into focusing to learn them.</p><p>The concept of circle of competence means define the areas of competence we have, and then only operate within them. This gives us permission to say \"I don't know\" when we truly don't, avoiding a bad decision due to a lack of expertise.</p><p>Our circle changes throughout life, as we slowly develop areas we become more competent in. As Mr. Charlie Munger says the following: \"Develop into a lifelong self-learner through voracious reading; cultivate curiosity and strive to become a little wiser every day.\"</p><p>I definitely agree!</p>",   
+          "example" : "<p>A prime example of why it is imperative to stay in your lane? I<strong>nvesting</strong>.</p><p>At the time of writing, each business day billion of shares are traded throughout the world's stock markets. They are in different industries, with different business models, and different products. I would posture staying a true expert on each of the differences mentioned would be near impossible.</p><p>By sticking to the industries or companies you can easily understand from your competencies, and that have comprehensible business models with honest financial statements, then you can better evaluate them with your knowledge base.</p><p>Warren Buffet follows this strategy - with Coke being the proof in the pudding for his theory.</p>",
+          "img" : "images/circleOfCompetence.jpeg",
+          "imgAlt" : "A black background with a blue spiral staircase, symbolizing a circle of competence.",
+          "moreResources" : "<ul><li><a href='http://www.businessinsider.com/the-circle-of-competence-theory-2013-12'>Business Insider</a></li><li><a href='https://www.youtube.com/watch?v=P305CTi8_FQ'>Warren Buffet's Baseball Analogy</a></li><li><a href='https://www.fool.com/investing/value/2006/10/04/the-circle-of-competence.aspx'>Motley Fool</a></li></ul>",
+          "summary" : "Our circle of competence embodies the knowledge we certainly know and can confidently make decisions from.",
+          "title" : "Circle of Competence"
+        };
+    document.getElementById('mentalModelBasic').mentalModel = mentalModel;
+  </script>
+</html>

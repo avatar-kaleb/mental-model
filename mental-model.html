@@ -1,0 +1,131 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<!-- Paper Components -->
+<link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="/bower_components/app-layout/app-layout.html">
+
+<!-- Iron Components -->
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="mm-icons.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+
+<!-- Style imports -->
+<link rel="import" href="/bower_components/paper-styles/color.html">
+
+<dom-module id="mental-model">
+  <template>
+    <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      app-toolbar {
+        background-color: var(--paper-deep-orange-400);
+        color: #fff;
+      }
+
+      paper-tabs {
+        --paper-tabs-selection-bar-color: var(--paper-deep-orange-400);
+        --paper-tabs: {
+          background-color: white;
+        }
+      }
+
+      paper-tab.iron-selected {
+        color: var(--paper-deep-orange-400);
+      }
+
+      iron-pages {
+        background-color: white;
+        margin-top: 1px;
+      }
+
+      .tab-content {
+        padding: 1em;
+      }
+
+      @media (min-width: 1201px) {
+        #wrapper-div {
+          padding-left: 10%;
+          padding-right: 10%;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        #wrapper-div {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
+
+      @media (max-width: 400px) {
+        #wrapper-div {
+          padding-left: 2%;
+          padding-right: 2%;
+        }
+      }
+    </style>
+
+    <div id="wrapper-div" class="container layout center-center">
+      <app-toolbar>
+          <paper-icon-button icon="mm-icons:arrow-back" on-tap="backButtonTapped"></paper-icon-button>
+          <div id="mm-title" main-title spacer>[[mentalModel.title]]</div>
+      </app-toolbar>
+      <paper-tabs selected="{{selectedTab}}" fit-container="true" hide-scroll-buttons="true" scrollable>
+        <paper-tab>Definition</paper-tab>
+        <paper-tab>Example</paper-tab>
+        <paper-tab>Defenses</paper-tab>
+        <paper-tab>Resources</paper-tab>
+      </paper-tabs>
+      <iron-pages id="ironPages" selected="{{selectedTab}}">
+        <div class="tab-content" inner-h-t-m-l="[[mentalModel.definition]]"></div>
+        <div class="tab-content" inner-h-t-m-l="[[mentalModel.example]]"></div>
+        <div class="tab-content" inner-h-t-m-l="[[mentalModel.defense]]"></div>
+        <div class="tab-content" inner-h-t-m-l="[[mentalModel.moreResources]]"></div>
+      </iron-pages>
+    </div>
+
+  </template>
+
+  <script>
+    /**
+     * `mental-model`
+     *
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MentalModel extends Polymer.Element {
+      static get is() { return 'mental-model'; }
+      static get properties() {
+        return {
+          mentalModel: {
+            type: Object,
+            value: function() {
+              return {};
+            },
+            selectedTab: {
+              type: Number,
+              value: 0,
+              notify: true
+            }
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+        this.$.ironPages.selectIndex(0);
+      }
+
+      backButtonTapped(e) {
+        this.dispatchEvent(new CustomEvent('mm-back-btn-tapped', e))
+      }
+    }
+
+    window.customElements.define(MentalModel.is, MentalModel);
+  </script>
+</dom-module>
