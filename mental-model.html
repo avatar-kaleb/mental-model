@@ -47,28 +47,38 @@
       }
 
       @media (min-width: 1201px) {
-        #wrapper-div {
+        #wrapperDiv {
           padding-left: 10%;
           padding-right: 10%;
         }
       }
 
       @media (max-width: 1200px) {
-        #wrapper-div {
+        #wrapperDiv {
           padding-left: 5%;
           padding-right: 5%;
         }
       }
 
       @media (max-width: 400px) {
-        #wrapper-div {
+        #wrapperDiv {
           padding-left: 2%;
           padding-right: 2%;
         }
       }
+
+      #wrapperDiv {
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      #wrapperDiv.fadeIn {
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
     </style>
 
-    <div id="wrapper-div" class="container layout center-center">
+    <div id="wrapperDiv" class="container layout center-center">
       <app-toolbar>
           <paper-icon-button icon="mm-icons:arrow-back" on-tap="backButtonTapped"></paper-icon-button>
           <div id="mm-title" main-title spacer>[[mentalModel.title]]</div>
@@ -114,6 +124,14 @@
             }
           }
         };
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        // adding a transition class here, but need a small delay
+        setTimeout(() => {
+          this.$.wrapperDiv.classList.add('fadeIn');
+        }, 0);
       }
 
       ready() {
